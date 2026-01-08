@@ -1,0 +1,21 @@
+{% extends 'portal/base.html' %}
+{% block content %}
+<div style="max-width: 500px; margin: auto; text-align: center;">
+    <h2>Consulter mon Résultat</h2>
+    <form method="GET" style="margin: 20px 0;">
+        <input type="text" name="matricule" placeholder="Entrez votre Matricule" required 
+               style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        <button type="submit" style="width: 100%; background: var(--blue); color: white; padding: 12px; border: none; border-radius: 5px;">Rechercher</button>
+    </form>
+
+    {% if result %}
+    <div style="background: white; padding: 20px; border-radius: 10px; border-top: 4px solid green;">
+        <h3>Félicitations, {{ result.student_name }}</h3>
+        <p>Promotion : {{ result.promotion }}</p>
+        <a href="{{ result.result_pdf.url }}" target="_blank" style="display: block; margin-top: 15px; color: var(--red); font-weight: bold;">📥 Télécharger mon Relevé PDF</a>
+    </div>
+    {% elif query %}
+    <p style="color: var(--red);">Aucun résultat pour le matricule {{ query }}.</p>
+    {% endif %}
+</div>
+{% endblock %}

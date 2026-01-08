@@ -1,0 +1,25 @@
+{% extends 'portal/base.html' %}
+{% block content %}
+<section class="hero">
+    <h1>À Propos de l'ISTP-LIKASI</h1>
+    <p>Excellence technique et professionnelle depuis 2023</p>
+</section>
+
+<div class="info-text" style="max-width: 800px; margin: 0 auto 50px; text-align: center;">
+    <h2>Notre Mission</h2>
+    <p>Sous l'Arrêté Ministériel N° 0124/MINESU/CAB.MIN/2023, l'ISTP Likasi forme les futurs cadres de l'industrie minière et technologique de la RDC.</p>
+</div>
+
+<h2 style="text-align: center; margin-bottom: 30px;">Nos Filières d'Excellence</h2>
+<div class="grid-depts">
+    {% for dept in departments %}
+    <div class="dept-card">
+        <img src="{{ dept.image.url }}">
+        <div style="padding: 15px;">
+            <h3 style="color: var(--blue);">{{ dept.name }}</h3>
+            <p>{{ dept.description }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

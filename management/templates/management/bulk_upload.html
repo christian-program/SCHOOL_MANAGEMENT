@@ -1,0 +1,30 @@
+{% extends 'portal/base.html' %}
+
+{% block content %}
+<div class="card" style="max-width: 600px; margin: 50px auto; padding: 30px;">
+    <h2 style="color: #004a99; text-align: center;">Importation Massive de Résultats</h2>
+    <hr>
+    
+    <div style="background: #eef; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+        <p><strong>Instructions :</strong></p>
+        <ul style="font-size: 0.9rem;">
+            <li>Nommez chaque PDF par le matricule (ex: <code>ISTP-001.pdf</code>).</li>
+            <li>Mettez tous les PDF dans un dossier et compressez-le en <strong>.zip</strong>.</li>
+            <li>Le système créera automatiquement les fiches pour chaque étudiant.</li>
+        </ul>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Promotion (ex: G2 Mines) :</label>
+        <input type="text" name="promotion" required style="width: 100%; padding: 10px; margin: 10px 0;">
+
+        <label>Sélectionner le fichier ZIP :</label>
+        <input type="file" name="zip_file" accept=".zip" required style="display: block; margin: 15px 0;">
+
+        <button type="submit" style="background: #28a745; color: white; padding: 15px; width: 100%; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+            🚀 Lancer l'importation automatique
+        </button>
+    </form>
+</div>
+{% endblock %}

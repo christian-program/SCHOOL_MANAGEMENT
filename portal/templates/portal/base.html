@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISTP-LIKASI</title>
+    <link rel="stylesheet" href="{% static 'portal/css/style.css' %}">
+</head>
+<body>
+    <div class="top-bar">
+        <span>📧 infos@istp-likasi.ac.cd</span>
+        <span>📍 Likasi, Haut-Katanga, RDC</span>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">ISTP-<span>LIKASI</span></h1>
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Accueil</a></li>
+                <li><a href="{% url 'announcements' %}">Actualités</a></li>
+                <li><a href="{% url 'schedules' %}">Horaires</a></li>
+                <li><a href="{% url 'results' %}">Résultats</a></li>
+                <li><a href="{% url 'about' %}">À propos</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'teacher_dashboard' %}" style="color: #d9534f;">DASHBOARD</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <main class="content-wrapper">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <h3>ISTP-LIKASI</h3>
+                <p>Arrêté Ministériel : N° 0124/MINESU/CAB.MIN/2023</p>
+            </div>
+            <div>
+                <h3>Contact</h3>
+                <p>Avenue de l'Université, Likasi</p>
+                <p>+243 812 345 678</p>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 ISTP-Likasi. All Rights Reserved.</div>
+    </footer>
+</body>
+</html>
