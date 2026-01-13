@@ -12,10 +12,10 @@ class Department(models.Model):
 
 class Promotion(models.Model):
     name = models.CharField(max_length=100)
-    department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name="promotions")
 
     def __str__(self):
-        return f"self.name / self.department.name" 
+        return f"{self.name} / {self.department.name}"
 
 class Post(models.Model):
     POST_TYPES = (
@@ -28,7 +28,6 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     promotion = models.ForeignKey(Promotion, on_delete=models.CASCADE, blank=True, null=True)
-    department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, blank=True)
     image = models.ImageField(upload_to='posts/', blank=True, null=True)
     video = models.FileField(upload_to='videos/', blank=True, null=True)
     document_pdf = models.FileField(upload_to='documents/', blank=True, null=True)
@@ -45,6 +44,6 @@ class StudentResult(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     student_name = models.CharField(max_length=200)
     student_id = models.CharField(max_length=50, unique=True)
-    promotion = models.ForeignKey(Promotion, on_delete=models.CASCADE,blank=True, null=True)
+    promotion = models.ForeignKey(Promotion, on_delete=models.CASCADE)
     result_pdf = models.FileField(upload_to='results_pdfs/')
     uploaded_at = models.DateTimeField(auto_now_add=True)

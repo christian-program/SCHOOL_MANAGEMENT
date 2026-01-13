@@ -20,16 +20,27 @@
                 <h1 class="logo">ISES-<span>LIKASI</span></h1>
             </div>
 
-
             <ul class="nav-links">
                 <li><a href="{% url 'home' %}">Accueil</a></li>
                 <li><a href="{% url 'announcements' %}">Actualités</a></li>
                 <li><a href="{% url 'schedules' %}">Horaires</a></li>
                 <li><a href="{% url 'results' %}">Résultats</a></li>
                 <li><a href="{% url 'about' %}">À propos</a></li>
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'teacher_dashboard' %}" style="color: #d9534f;">DASHBOARD</a></li>
+            {% if user.is_authenticated %}
+                {% if user.is_staff %}
+                    <li><a href="{% url 'teacher_dashboard' %}" style="color: var(--red);">⚙️ DASHBOARD</a></li>
                 {% endif %}
+                
+                <li>
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="logout-button">Déconnexion ({{ user.username }})</button>
+                    </form>
+                </li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Connexion</a></li>
+                <li><a href="{% url 'register' %}" style="color: var(--blue);">S'inscrire</a></li>
+            {% endif %}
             </ul>
         </div>
     </nav>

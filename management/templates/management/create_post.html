@@ -18,8 +18,12 @@
         <textarea name="content" rows="4" style="width: 100%; padding: 10px; margin: 10px 0;"></textarea>
 
         <label>Promotion (Optionnel) :</label>
-        <input type="text" name="promotion" placeholder="Ex: G1, L2" style="width: 100%; padding: 10px; margin: 10px 0;">
-
+        <select name="promotion" style="width: 100%; padding: 10px; margin: 10px 0;">
+            <option value="">---------</option>
+            {% for promo in promotions %}
+                <option value="{{ promo.id }}">{{ promo.name }} ({{ promo.department.name }})</option>
+            {% endfor %}
+        </select>
         <div id="media-fields">
             <label>Image :</label> <input type="file" name="image" accept="image/*"><br><br>
             <label>Vidéo :</label> <input type="file" name="video" accept="video/*">

@@ -38,7 +38,13 @@
             <div class="social-interaction-btns">
                 <form action="{% url 'like_post' post.id %}" method="POST" style="display:inline;">
                     {% csrf_token %}
-                    <button type="submit" class="interaction-btn">👍 J'aime</button>
+                    <button type="submit" class="interaction-btn {% if user in post.likes.all %}active-like{% endif %}">
+                        {% if user in post.likes.all %}
+                            💙 J'aime
+                        {% else %}
+                            👍 J'aime
+                        {% endif %}
+                    </button>
                 </form>
                 
                 <button type="button" class="interaction-btn btn-toggle-comments" onclick="toggleComments('{{ post.id }}')">
