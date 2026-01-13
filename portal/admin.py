@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Department, Post, Comment, StudentResult
+from .models import Department, Post, Comment, StudentResult, Promotion
 
 @admin.register(Department)
 class DepartmentAdmin(admin.ModelAdmin):
@@ -14,5 +14,9 @@ class PostAdmin(admin.ModelAdmin):
 class StudentResultAdmin(admin.ModelAdmin):
     list_display = ('student_name', 'student_id', 'promotion')
     search_fields = ('student_id', 'student_name')
+
+@admin.register(Promotion)
+class PromotionAdmin(admin.ModelAdmin):
+    list_display = ('name', 'department',)
 
 admin.site.register(Comment)

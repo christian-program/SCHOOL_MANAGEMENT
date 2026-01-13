@@ -15,7 +15,12 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <h1 class="logo">ISTP-<span>LIKASI</span></h1>
+            <div class="logo-container">
+                <img src="{% static 'portal/images/logo.jpg' %}" alt="Ises logo" class="logo-image">
+                <h1 class="logo">ISES-<span>LIKASI</span></h1>
+            </div>
+
+
             <ul class="nav-links">
                 <li><a href="{% url 'home' %}">Accueil</a></li>
                 <li><a href="{% url 'announcements' %}">Actualités</a></li>
@@ -36,7 +41,8 @@
     <footer class="footer">
         <div class="footer-grid">
             <div>
-                <h3>ISTP-LIKASI</h3>
+                <h3>ISES-LIKASI</h3>
+                <h4>Batisons l'avenir ensemble</h4>
                 <p>Arrêté Ministériel : N° 0124/MINESU/CAB.MIN/2023</p>
             </div>
             <div>
