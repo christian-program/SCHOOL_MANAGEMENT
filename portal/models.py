@@ -42,6 +42,7 @@ class Comment(models.Model):
 
 class StudentResult(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True) # Ajoutez null=True
     student_name = models.CharField(max_length=200)
     student_id = models.CharField(max_length=50, unique=True)
     promotion = models.ForeignKey(Promotion, on_delete=models.CASCADE)

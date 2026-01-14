@@ -46,7 +46,7 @@ def results_view(request):
     if query:
         # On cherche par matricule EXACT ou PARTIEL
         results = StudentResult.objects.filter(student_id__icontains=query)
-        
+                
     return render(request, 'portal/results.html', {
         'results': results,
         'query': query

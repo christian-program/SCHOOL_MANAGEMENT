@@ -78,22 +78,38 @@ def bulk_upload(request):
             zref.extractall(extract_path)
 
         # 4. Parcours de l'Excel et création des résultats
+        # ... (début de la fonction bulk_upload identique) ...
+        
+        # 4. Parcours de l'Excel et création des résultats
         for index, row in df.iterrows():
-            matricule = str(row['matricule'])
+            matricule = str(row['matricule']).strip() # .strip() pour enlever les espaces invisibles
             nom_etudiant = row['nom']
             nom_fichier_pdf = f"{matricule}.pdf"
-            pdf_source_path = os.path.join(extract_path, nom_fichier_pdf)
+            
+            # CORRECTION : Recherche récursive du fichier dans tous les sous-dossiers
+            pdf_source_path = None
+            for root, dirs, files in os.walk(extract_path):
+                if nom_fichier_pdf in files:
+                    pdf_source_path = os.path.join(root, nom_fichier_pdf)
+                    break
 
-            if os.path.exists(pdf_source_path):
-                # On crée l'entrée en base de données
+            # ... à l'intérieur de la boucle for dans bulk_upload ...
+            if pdf_source_path and os.path.exists(pdf_source_path):
                 with open(pdf_source_path, 'rb') as f:
                     from django.core.files import File
-                    resultat = StudentResult(
-                        student_name=nom_etudiant,
+                    
+                    # On ajoute 'author': request.user dans les defaults
+                    resultat, created = StudentResult.objects.update_or_create(
                         student_id=matricule,
-                        promotion=promotion_obj
+                        defaults={
+                            'student_name': nom_etudiant,
+                            'promotion': promotion_obj,
+                            'author': request.user  # <--- AJOUTEZ CETTE LIGNE ICI
+                        }
                     )
                     resultat.result_pdf.save(nom_fichier_pdf, File(f), save=True)
+            else:
+                print(f"⚠️ Fichier non trouvé pour : {nom_fichier_pdf}")
 
         # Nettoyage des fichiers temporaires
         os.remove(full_zip_path)
