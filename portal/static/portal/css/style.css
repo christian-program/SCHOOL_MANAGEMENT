@@ -439,7 +439,7 @@ button[type=submit]:hover{
 /*whatsApp button*/
 .whatsApp-btn {
     background-color: rgb(56, 117, 230);
-    padding: 8px 15px;
+    padding: 5px 10px;
     border-radius: 20px;
     text-align: center;
     font-weight: 500;
