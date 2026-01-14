@@ -1,15 +1,17 @@
 {% extends 'portal/base.html' %}
 
+{% block title %}Resultat{% endblock %}
+
 {% block content %}
 <div class="feed-container">
     <div class="page-header-box" style="background: linear-gradient(135deg, var(--blue), #002a5a); color: white; padding: 30px; border-radius: 12px; margin-bottom: 25px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
         <h1>🎓 Consultation des Résultats</h1>
-        <p>ISTP-Likasi : Excellence et Rigueur Professionnelle</p>
+        <p>ISES-Likasi : Batisons l'avenir ensemble</p>
     </div>
 
     <div class="post-card" style="margin-bottom: 30px; padding: 20px;">
         <form method="GET" action="{% url 'results' %}" style="display: flex; gap: 10px;">
-            <input type="text" name="q" placeholder="Entrez votre matricule (ex: 22-ISTP-001)..." 
+            <input type="text" name="q" placeholder="Entrez votre matricule (ex: 22-ISES-001)..." 
                    value="{{ request.GET.q }}"
                    style="flex-grow: 1; padding: 12px; border: 2px solid #eee; border-radius: 8px; font-size: 1rem; outline: none;">
             <button type="submit" class="btn-primary" style="padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">

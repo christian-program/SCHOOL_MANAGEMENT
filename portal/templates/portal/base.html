@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISTP-LIKASI</title>
+    <title>ISES-LIKASI {% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'portal/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
     <div class="top-bar">
-        <span>📧 infos@istp-likasi.ac.cd</span>
+        <span>📧 infos@ises-likasi.ac.cd</span>
         <span>📍 Likasi, Haut-Katanga, RDC</span>
     </div>
 
@@ -18,7 +19,14 @@
             <div class="logo-container">
                 <img src="{% static 'portal/images/logo.jpg' %}" alt="Ises logo" class="logo-image">
                 <h1 class="logo">ISES-<span>LIKASI</span></h1>
+
+                <div class="whatsApp-btn whatsApp-btn-header">
+                    <a href="https://wa.me/243990862014" target="_blank" class="btn-contact">
+                        <i class="fab fa-whatsapp"></i> Contactez-nous
+                    </a>
+                </div>
             </div>
+
 
             <ul class="nav-links">
                 <li><a href="{% url 'home' %}">Accueil</a></li>
@@ -59,10 +67,15 @@
             <div>
                 <h3>Contact</h3>
                 <p>Avenue de l'Université, Likasi</p>
-                <p>+243 812 345 678</p>
+                
+                <div class="whatsApp-btn whatsApp-btn-footer">
+                    <a href="https://wa.me/243990862014" target="_blank" class="btn-contact">
+                    <i class="fab fa-whatsapp"></i> Contactez-nous  +243 812 345 678
+                </a>
+                </div>
             </div>
         </div>
-        <div class="footer-bottom">© 2026 ISTP-Likasi. All Rights Reserved.</div>
+        <div class="footer-bottom">© 2026 ISES-Likasi. All Rights Reserved.</div>
     </footer>
 </body>
 </html>

@@ -6,6 +6,7 @@ from django.contrib.auth import login
 from .forms import SimpleRegisterForm
 from django.contrib.auth.models import User
 
+
 def home_view(request):
     posts = Post.objects.all().order_by('-created_at')
     return render(request, 'portal/home.html', {'posts': posts})

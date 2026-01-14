@@ -435,3 +435,22 @@ button[type=submit]:hover{
     color: var(--red); /* Change de couleur au survol comme les liens */
     text-decoration: underline;
 }
+
+/*whatsApp button*/
+.whatsApp-btn {
+    background-color: rgb(56, 117, 230);
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.whatsApp-btn-header {
+    margin-left: 10px;
+}
+
+.whatsApp-btn a {
+    text-decoration: none;
+    color: white;
+}
